@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="jedi/master::head(title = 'Bh')">
+    <meta charset="UTF-8">
+    <title>create</title>
+</head>
+<body>
+
+<nav th:replace="jedi/nav :: AllMenu">...</nav>
+<div id="display">
+    <div class="alert alert-danger" th:if="${param.error}">Invalid username or password</div>
+    <div class="alert alert-primary" th:if="${param.logout}">You have been logged out</div>
+    <div class="container text-center">
+        <th:block th:replace="::__${#info.typeOf(jediEntity)}__  (obj=${jediEntity}, action=${jediAction})">
+            ...
+        </th:block>
+    </div>
+</div>
+
+
+<th:block th:remove="all">
+
+    <th:block th:fragment="ArrayList (obj, action)">
+        <th:block th:each="each : ${jediEntity}">
+            <th:block th:replace="::__${#info.typeOf(each)}__  (obj=${each}, action=${jediAction})">
+                ...
+            </th:block>
+        </th:block>
+    </th:block>
+
+    <th:block th:fragment="com-jindanupajit-bullhorn-bluehorn-model-Message (obj, action)">
+
+        <th:block th:replace="message::__${jediActionType}__ (obj = ${obj}, action=${action})">
+            ...
+        </th:block>
+    </th:block>
+
+</th:block>
+</body>
+</html>

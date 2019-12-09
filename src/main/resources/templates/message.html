@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Message</title>
+</head>
+<body>
+<th:block th:remove="all">
+
+    <th:block th:fragment="LIST (obj, action)">
+        <div class="card my-1" style="width: 36rem;">
+<!--            <img src="..." class="card-img-top" alt="...">-->
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text" th:text="${obj.content}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </th:block>
+
+    <th:block th:fragment="PERSIST (obj, action)">
+       <th:block th:replace="jedi/form::form-auto(action = ${jediActionType})">
+           ...
+       </th:block>
+    </th:block>
+
+</th:block>
+</body>
+</html>
